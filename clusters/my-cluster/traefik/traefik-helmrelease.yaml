@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m0s
+  timeout: 10m0s
   chart:
     spec:
       chart: traefik
@@ -16,7 +17,11 @@ spec:
   targetNamespace: traefik
   install:
     createNamespace: true
+    timeout: 10m0s
+    remediation:
+      retries: 3
   upgrade:
+    timeout: 10m0s
     remediation:
       retries: 3
 
